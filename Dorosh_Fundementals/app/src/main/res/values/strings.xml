@@ -3,4 +3,23 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="shows">
+        <item>The Last Ship</item>
+        <item>Game of Thrones</item>
+        <item>Suits</item>
+        <item>Blindspot</item>
+        <item>The Walking Dead</item>
+        <item>Heroes</item>
+        <item>Community</item>
+        <item>Big Bang Theory</item>
+        <item>Mad Men</item>
+        <item>The Simpsons</item>
+        <item>Elementary</item>
+        <item>Family Guy</item>
+        <item>Arrow</item>
+        <item>Supernatural</item>
+
+    </string-array>
+
 </resources>
