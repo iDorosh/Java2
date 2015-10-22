@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.idorosh.i_dorosh_appone.Details">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Selected Car"
+        android:id="@+id/selectedCarLabel"
+        android:textSize="24sp"
+        android:textColor="#ffffff"
+        android:background="#b64a3f"
+        android:paddingBottom="10dp"
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="false"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Make"
+        android:id="@+id/detailMakeLabel"
+        android:layout_below="@+id/selectedCarLabel"
+        android:layout_centerHorizontal="true"
+        android:textColor="#b64a3f"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Model"
+        android:id="@+id/detailModelLabel"
+        android:textColor="#b64a3f"
+        android:layout_below="@+id/detailMakeText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Year"
+        android:id="@+id/detailYearLabel"
+        android:textColor="#b64a3f"
+        android:layout_below="@+id/detailModelText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Price"
+        android:id="@+id/detailPrice"
+        android:textColor="#b64a3f"
+        android:layout_below="@+id/detailYearText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Selected Make"
+        android:id="@+id/detailMakeText"
+        android:layout_below="@+id/detailMakeLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Selected Model"
+        android:id="@+id/detailModelText"
+        android:layout_below="@+id/detailModelLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Selected Year"
+        android:id="@+id/detailYearText"
+        android:layout_below="@+id/detailYearLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Selected Price"
+        android:id="@+id/detailPriceText"
+        android:layout_below="@+id/detailPrice"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
