@@ -11,7 +11,7 @@ public class Details extends AppCompatActivity {
     //Variables to hold strings coming from the inten
     String carMake;
     String carModel;
-    String carYear;
+    int carYear;
     String carPrice;
 
     //Int to hold the current index of the selected item
@@ -26,7 +26,7 @@ public class Details extends AppCompatActivity {
         currentIndex = getIntent().getExtras().getInt("currentIndex");
         carMake = getIntent().getExtras().getString("carMake");
         carModel = getIntent().getExtras().getString("carModel");
-        carYear = getIntent().getExtras().getString("carYear");
+        carYear = getIntent().getExtras().getInt("carYear");;
         carPrice = getIntent().getExtras().getString("carPrice");
 
         //Back button in the action bar
@@ -47,7 +47,7 @@ public class Details extends AppCompatActivity {
         detailModelText.setText(carModel);
 
         TextView detailYearText = (TextView)findViewById(R.id.detailYearText);
-        detailYearText.setText(carYear);
+        detailYearText.setText(String.valueOf(carYear));
 
         TextView detailPriceText = (TextView)findViewById(R.id.detailPriceText);
         detailPriceText.setText(carPrice);

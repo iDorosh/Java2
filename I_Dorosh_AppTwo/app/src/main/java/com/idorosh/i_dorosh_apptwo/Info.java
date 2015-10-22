@@ -7,11 +7,11 @@ public class Info implements Serializable {
     //variables for the data that is created by the cursor
     private String mMake;
     private String mModel;
-    private String mYear;
+    private int mYear;
     private String mPrice;
 
     //Setting variables to the data that's being passed in.
-    public Info(String make, String model, String year, String price){
+    public Info(String make, String model, int year, String price){
         mMake = make;
         mModel = model;
         mYear = year;
@@ -26,7 +26,7 @@ public class Info implements Serializable {
         return mModel;
     }
 
-    public String getmYear(){
+    public int getmYear(){
         return mYear;
     }
 

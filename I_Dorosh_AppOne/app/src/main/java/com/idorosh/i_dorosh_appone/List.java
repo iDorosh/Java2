@@ -1,5 +1,6 @@
 package com.idorosh.i_dorosh_appone;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -48,19 +49,20 @@ public class List extends AppCompatActivity {
     }
 
     public void getCursor(){
-        //Setting db helper and sqlite db
-        dbHelper = new DatabaseHelper(getApplicationContext());
-        sqLiteDB = dbHelper.getReadableDatabase();
-        //Setting cursor
-        cursor = dbHelper.getInformation(sqLiteDB);
+        //Getting query from content resolver and setting cursor to the values;
+        ContentResolver cr = getContentResolver();
+        cursor = cr.query(ContentProvider.CONTENT_URI,null,null,null,null);
 
         //Getting individual strings from cursor and placing them into the array list.
         if(cursor.moveToFirst()){
             do {
-                String make,model,year,price;
+                String make;
+                String model;
+                int year;
+                String price;
                 make = cursor.getString(0);
                 model = cursor.getString(1);
-                year = cursor.getString(2);
+                year = cursor.getInt(2);
                 price = cursor.getString(3);
                 carsInfo.add (new Info(make,model,year,price));
             }while (cursor.moveToNext());
@@ -161,7 +163,7 @@ public class List extends AppCompatActivity {
         intent.setClass(this, Details.class);
         intent.putExtra("carMake", carsInfo.get(index).getmMake().toString());
         intent.putExtra("carModel", carsInfo.get(index).getmModel().toString());
-        intent.putExtra("carYear", carsInfo.get(index).getmYear().toString());
+        intent.putExtra("carYear", carsInfo.get(index).getmYear());
         intent.putExtra("carPrice", carsInfo.get(index).getmPrice().toString());
         intent.putExtra("carsInfo" , carsInfo);
         intent.putExtra("currentIndex", index);

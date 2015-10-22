@@ -1,6 +1,8 @@
 package com.idorosh.i_dorosh_appone;
 
 import android.app.AlertDialog;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -39,9 +41,6 @@ public class Add extends AppCompatActivity {
         //Back button for the action bar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-
-
     }
 
     @Override
@@ -72,7 +71,7 @@ public class Add extends AppCompatActivity {
         final EditText yearText = (EditText) findViewById(R.id.carYear);
         final EditText priceText = (EditText) findViewById(R.id.carPrice);
 
-            //Alert diolog to verify that the user wished to add the new infomration.
+            //Alert diolog to verify that the user wished to add the new information.
             new AlertDialog.Builder(context)
                     .setTitle("Add Posting")
                     .setMessage("Confirm listing of " + yearText.getText().toString() + " " + makeText.getText().toString() + " " + modelText.getText().toString() + " for " + priceText.getText().toString())
@@ -80,15 +79,19 @@ public class Add extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
 
                             //Adding new info into arraylist
-                            carsInfo.add(new Info(makeText.getText().toString(), modelText.getText().toString(), yearText.getText().toString(), priceText.getText().toString()));
+                            carsInfo.add(new Info(makeText.getText().toString(), modelText.getText().toString(), Integer.parseInt(yearText.getText().toString()), priceText.getText().toString()));
 
-                            //Adding information into the data base
-                            dbHelper = new DatabaseHelper(context);
-                            sqLiteDb = dbHelper.getWritableDatabase();
-                            dbHelper.addInformation(makeText.getText().toString(), modelText.getText().toString(), yearText.getText().toString(), priceText.getText().toString(), sqLiteDb);
-                            //Toast for car listed
+                            ContentValues v = new ContentValues();
+                            v.put("make", makeText.getText().toString());
+                            v.put("model", modelText.getText().toString());
+                            v.put("year", Integer.parseInt(yearText.getText().toString()));
+                            v.put("price", priceText.getText().toString());
+
+                            //Getting content resolver and running insert method
+                            ContentResolver cr = getContentResolver();
+                            cr.insert(ContentProvider.CONTENT_URI, v);
+
                             Toast.makeText(getBaseContext(), "Car Listed", Toast.LENGTH_SHORT).show();
-                            dbHelper.close();
 
                             //Runs Add car Method
                             addCar();

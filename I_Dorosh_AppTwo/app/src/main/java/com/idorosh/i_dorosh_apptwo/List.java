@@ -66,10 +66,13 @@ public class List extends AppCompatActivity {
         //Getting individual data from cursor object and setting to list array
         if(cursor.moveToFirst()){
             do {
-                String make,model,year,price;
+                String make;
+                String model;
+                int year;
+                String price;
                 make = cursor.getString(0);
                 model = cursor.getString(1);
-                year = cursor.getString(2);
+                year = cursor.getInt(2);
                 price = cursor.getString(3);
                 carsInfo.add (new Info(make,model,year,price));
             }while (cursor.moveToNext());
@@ -123,7 +126,7 @@ public class List extends AppCompatActivity {
         intent.setClass(this, Details.class);
         intent.putExtra("carMake", carsInfo.get(index).getmMake().toString());
         intent.putExtra("carModel", carsInfo.get(index).getmModel().toString());
-        intent.putExtra("carYear", carsInfo.get(index).getmYear().toString());
+        intent.putExtra("carYear", carsInfo.get(index).getmYear());
         intent.putExtra("carPrice", carsInfo.get(index).getmPrice().toString());
         intent.putExtra("carsInfo" , carsInfo);
         intent.putExtra("currentIndex", index);

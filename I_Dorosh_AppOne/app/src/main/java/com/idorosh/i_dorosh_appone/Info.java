@@ -7,11 +7,11 @@ public class Info implements Serializable {
         //Variables to hold information that was added by the user
         private String mMake;
         private String mModel;
-        private String mYear;
+        private int mYear;
         private String mPrice;
 
         //Setting variables using the parameters
-        public Info(String make, String model, String year, String price){
+        public Info(String make, String model, int year, String price){
             mMake = make;
             mModel = model;
             mYear = year;
@@ -27,7 +27,7 @@ public class Info implements Serializable {
             return mModel;
         }
 
-        public String getmYear(){
+        public int getmYear(){
             return mYear;
         }
 

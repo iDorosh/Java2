@@ -1,8 +1,8 @@
 package com.idorosh.i_dorosh_appone;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.*;
+import android.content.ContentProvider;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +21,7 @@ public class Details extends AppCompatActivity {
     //String Variables to hold intent extras from list class
     String carMake;
     String carModel;
-    String carYear;
+    int carYear;
     String carPrice;
     SQLiteDatabase sqLiteDB;
     int currentIndex;
@@ -36,7 +36,7 @@ public class Details extends AppCompatActivity {
         currentIndex = getIntent().getExtras().getInt("currentIndex");
         carMake = getIntent().getExtras().getString("carMake");
         carModel = getIntent().getExtras().getString("carModel");
-        carYear = getIntent().getExtras().getString("carYear");
+        carYear = getIntent().getExtras().getInt("carYear");
         carPrice = getIntent().getExtras().getString("carPrice");
 
         //Back Button for the action bar
@@ -72,8 +72,9 @@ public class Details extends AppCompatActivity {
         TextView detailModelText = (TextView)findViewById(R.id.detailModelText);
         detailModelText.setText(carModel);
 
+
         TextView detailYearText = (TextView)findViewById(R.id.detailYearText);
-        detailYearText.setText(carYear);
+        detailYearText.setText(String.valueOf(carYear));
 
         TextView detailPriceText = (TextView)findViewById(R.id.detailPriceText);
         detailPriceText.setText(carPrice);
@@ -88,10 +89,12 @@ public class Details extends AppCompatActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        //Removing information from the data base
-                        DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
-                        sqLiteDB = dbHelper.getReadableDatabase();
-                        dbHelper.deleteInformation(carModel, carMake, carYear, carPrice, sqLiteDB);
+                        String selection =  "model=? AND make=? AND price=?";
+                        String[] selection_argument = {carModel,carMake,carPrice};
+
+                        //Getting Content resolver and running delete method
+                        ContentResolver cr = getContentResolver();
+                        cr.delete(com.idorosh.i_dorosh_appone.ContentProvider.CONTENT_URI, selection, selection_argument);
 
                         //Toast verifying deletion.
                         Toast.makeText(getBaseContext(), "Car Listing Removed", Toast.LENGTH_SHORT).show();
