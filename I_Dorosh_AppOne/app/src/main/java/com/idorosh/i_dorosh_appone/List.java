@@ -3,10 +3,8 @@ package com.idorosh.i_dorosh_appone;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,12 +25,10 @@ public class List extends AppCompatActivity {
     //Array list will hold the information from the Cursor
     ArrayList<Info> carsInfo = new ArrayList<>();
 
-    //Global variables for the list view, text view, adapter databasehelper, sqlite db and cursor
+    //Global variables for the list view, text view, adapter and cursor
     ListView listView;
     TextView listEmpty;
     ArrayAdapter adapter;
-    SQLiteDatabase sqLiteDB;
-    DatabaseHelper dbHelper;
     Cursor cursor;
 
     int currentIndex;

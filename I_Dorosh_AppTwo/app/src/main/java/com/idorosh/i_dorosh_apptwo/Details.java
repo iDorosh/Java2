@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import java.util.ArrayList;
+
 
 public class Details extends AppCompatActivity {
 
-    //Variables to hold strings coming from the inten
+    //Variables to hold strings coming from the intent
     String carMake;
     String carModel;
     int carYear;
