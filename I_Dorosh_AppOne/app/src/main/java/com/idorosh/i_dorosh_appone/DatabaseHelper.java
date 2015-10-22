@@ -1,11 +1,9 @@
 package com.idorosh.i_dorosh_appone;
 
-import android.content.ContentValues;
+
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper{
@@ -24,12 +22,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public DatabaseHelper(Context c) {
         super(c, DATABASE_FILE, null, DATABASE_VERSION);
     }
+
     @Override
     //Creating Table
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE);
     }
-
     //On Upgrade not needed
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
